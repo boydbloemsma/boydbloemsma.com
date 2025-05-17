@@ -1,5 +1,5 @@
 ---
-import './src/styles/global.css';
+import '../../src/styles/global.css';
 
 const { title = 'Boyd Bloemsma', description = "Boyd Bloemsma's little corner of the internet."} = Astro.props;
 const pathname = Astro.url.pathname;
@@ -43,11 +43,7 @@ const isProduction = import.meta.env.MODE === 'production';
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="manifest" href="/site.webmanifest" />
 
-		{isProduction && (
-			<!-- Fathom - beautiful, simple website analytics -->
-			<script src="https://cdn.usefathom.com/script.js" data-site="XCVRIKRE" defer></script>
-			<!-- / Fathom -->
-		)}
+		{isProduction && <script src="https://cdn.usefathom.com/script.js" data-site="XCVRIKRE" defer />}
 	</head>
 	<body>
 		<header class="px-4 py-3">

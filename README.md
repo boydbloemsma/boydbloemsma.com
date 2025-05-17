@@ -1,36 +1,46 @@
-# Astro Starter Kit: Basics
+# Boyd Bloemsma's Personal Website
 
-```sh
-npm create astro@latest -- --template basics
-```
+This is the codebase for my personal website and blog. As a software developer and tinkerer, I love making things and having lots of side projects going. This site is where I share my thoughts, projects, and experiences.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Simplicity is the Ultimate Sophistication
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This idea permeates through my entire life, including this website. At first glance, it's just a simple site - no unnecessary images, animations, forms, or JavaScript. This has a reason: my blog scores only 100's on PageSpeed Insights and loads within seconds all over the world. This is important to me because that's what I look for in websites - fast access to the information I want.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+But to achieve this simplicity, I had to do some sophisticated things behind the scenes:
 
-## 🚀 Project Structure
+### Technical Features
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Markdown to SQLite**: All articles are written in Markdown and parsed once during deployment, then stored in SQLite for extremely fast access
+- **Sitemap Generation**: Automatically generated to improve SEO
+- **OG Image Generation**: Custom OG images for better social media sharing
+- **Analytics**: Using Fathom Analytics to track page views without compromising privacy
+- **Cloudflare CDN**: Aggressive caching for optimal performance worldwide
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Projects
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Some of my other projects include:
 
-## 🧞 Commands
+### Shelveless
+
+When you start reading books, people will want to lend you books they've enjoyed. And once you've acquired a few books yourself, you will want to lend them out to others. This is a part of life; humans love to share stories, experiences and joy. Shelveless came from this idea - add your friends and keep track of the books you share.
+
+[https://shelveless.com](https://shelveless.com)
+
+### localpantry.shop
+
+A website for artisans to display their products. It's a simple way to showcase their products and get more customers.
+
+[https://localpantry.shop](https://localpantry.shop)
+
+## Tech Stack
+
+This website is built with:
+
+- **Astro**: Fast, content-focused web framework
+- **TailwindCSS**: For styling
+- **Cloudflare**: For hosting and CDN
+
+## Running Locally
 
 All commands are run from the root of the project, from a terminal:
 
@@ -40,9 +50,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## Remember
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Always remember, when things look simple you can bet someone put a lot of work in to make it seem that way!
