@@ -1,8 +1,15 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import Prose from "../../components/Prose.astro";
+
+interface ImageModule {
+    default: ImageMetadata;
+}
+
+const images = import.meta.glob<ImageModule>('../../images/*.{png,jpg,jpeg,webp}', { eager: true });
 
 export const getStaticPaths = (async () => {
 	const articles = await getCollection('blog');
@@ -36,6 +43,16 @@ const { Content, headings } = await render(article);
                     { article.data.excerpt }
                 </p>
             </div>
+
+            {article.data.image && images[`../../images/${article.data.image}`] && (
+                <div class="block w-full lg:col-span-2 mt-12">
+                    <Image
+                            class="shadow rounded-2xl aspect-[4/3] max-h-96 object-cover object-center w-full"
+                            src={images[`../../images/${article.data.image}`].default}
+                            alt={article.data.title}
+                    />
+                </div>
+            )}
 
             <div class="mt-12 flex">
                 {headings && headings.length > 0 && (

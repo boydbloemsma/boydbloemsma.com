@@ -15,7 +15,7 @@ Sometimes the easiest solution is the best solution.
 
 For my implementation a simple index file that returns the posted JSON payload was enough.
 
-```PHP
+```php
 <?php
 
 header('Content-Type: application/json');

@@ -30,7 +30,7 @@ Markdown itself won't do anything with this, but we can extract useful informati
 I don't want to use a database for this blog. But since I'm a big fan of the Eloquent ORM I will use the [Sushi](https://github.com/calebporzio/sushi) package to transform my articles to models.
 To do this I created the following code:
 
-```PHP
+```php
 <?php  
   
 namespace App\Models;  
@@ -82,7 +82,7 @@ It might look like a lot is happening in this code block but it really isn't tha
 
 ### Getting the articles
 
-```PHP
+```php
 <?php  
   
 namespace App\Models;  
@@ -137,7 +137,7 @@ The Sushi package takes the array we return in the `getRows` method and turns th
 
 ### Converting the file and enriching the model
 
-```PHP
+```php
 <?php  
   
 namespace App\Models;  
