@@ -1,34 +1,24 @@
 # Boyd Bloemsma's Personal Website
 
-This is the codebase for my personal website and blog. As a software developer and tinkerer, I love making things and having lots of side projects going. This site is where I share my thoughts, projects, and experiences.
+Welcome to the repository for my personal website and blog. I'm a developer who enjoys building things and juggling multiple side projects. This site serves as my digital home where I share what I'm working on and thinking about.
 
 ## Simplicity is the Ultimate Sophistication
 
-This idea permeates through my entire life, including this website. At first glance, it's just a simple site - no unnecessary images, animations, forms, or JavaScript. This has a reason: my blog scores only 100's on PageSpeed Insights and loads within seconds all over the world. This is important to me because that's what I look for in websites - fast access to the information I want.
-
-But to achieve this simplicity, I had to do some sophisticated things behind the scenes:
-
-### Technical Features
-
-- **Markdown to SQLite**: All articles are written in Markdown and parsed once during deployment, then stored in SQLite for extremely fast access
-- **Sitemap Generation**: Automatically generated to improve SEO
-- **OG Image Generation**: Custom OG images for better social media sharing
-- **Analytics**: Using Fathom Analytics to track page views without compromising privacy
-- **Cloudflare CDN**: Aggressive caching for optimal performance worldwide
+This philosophy guides my approach to development. My website might look basic at first - clean design, minimal elements, and focused content. There's a purpose behind this approach: performance and usability come first. The site loads quickly everywhere and gets perfect PageSpeed scores, which matters to me as someone who values getting to information without waiting.
 
 ## Projects
 
-Some of my other projects include:
+Here are a couple of things I've built:
 
 ### Shelveless
 
-When you start reading books, people will want to lend you books they've enjoyed. And once you've acquired a few books yourself, you will want to lend them out to others. This is a part of life; humans love to share stories, experiences and joy. Shelveless came from this idea - add your friends and keep track of the books you share.
+A platform for book lovers to manage their lending library. Born from the challenge of keeping track of borrowed books, Shelveless helps you connect with friends and maintain a record of who's currently enjoying your favorite reads.
 
 [https://shelveless.com](https://shelveless.com)
 
 ### localpantry.shop
 
-A website for artisans to display their products. It's a simple way to showcase their products and get more customers.
+A marketplace connecting local artisans with customers. This platform gives small-scale producers a simple way to showcase their creations and reach new audiences.
 
 [https://localpantry.shop](https://localpantry.shop)
 
@@ -51,6 +41,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 
-## Remember
+## Final Thought
 
-Always remember, when things look simple you can bet someone put a lot of work in to make it seem that way!
+The most elegant solutions often hide their complexity. What appears effortless on the surface usually represents hours of thoughtful work behind the scenes.
