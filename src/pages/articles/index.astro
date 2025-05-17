@@ -5,6 +5,10 @@ import articleViews from "../../data/article-views.json";
 
 const articles = (await getCollection('blog'))
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const popularArticles = (await getCollection('blog'))
+    .sort((a, b) => articleViews[b.id] - articleViews[a.id])
+    .slice(0, 5);
 ---
 
 <Layout>
@@ -73,10 +77,13 @@ const articles = (await getCollection('blog'))
                         Popular Articles
                     </h3>
                     <ul class="space-y-1 mt-4 text-gray-500 list-none text-sm" role="list">
-                        <li>
-                            <a href="" class="hover:text-zinc-700 duration-150">
-                            </a>
-                        </li>
+                        {popularArticles.map(article =>
+                            <li>
+                                <a href={`/articles/${article.id}`} class="hover:text-zinc-700 duration-150">
+                                    { article.data.title }
+                                </a>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>
