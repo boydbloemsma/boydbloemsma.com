@@ -57,7 +57,7 @@ const articles = await getCollection('blog');
                             </div>
                             <a
                                     class="flex items-center text-sm font-medium"
-                                    href={article.url}
+                                    href={`/articles/${article.id}`}
                             >
                                 <span class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl"></span>
                                 <span class="text-base text-gray-600 group-hover:text-gray-900 duration-150 relative">

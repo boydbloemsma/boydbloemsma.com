@@ -1,8 +1,64 @@
 ---
+import type { GetStaticPaths, MarkdownHeading } from "astro";
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Prose from "../../components/Prose.astro";
+
+export const getStaticPaths = (async () => {
+	const articles = await getCollection('blog');
+
+    return articles.map(article => ({
+        params: {slug: article.id},
+        props: {article},
+    }));
+}) satisfies GetStaticPaths;
+
+const { article } = Astro.props;
+const { Content } = await render(article);
 ---
 
-<article class="prose mx-auto">
-    <h1>{entry.data.title}</h1>
-    <p class="text-gray-500 text-sm">{entry.data.date}</p>
-    <Content />
-</article>
+<Layout>
+    <section>
+        <div class="px-8 py-24 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
+            <div>
+                <dl
+                        class="font-mono text-xs font-medium tracking-tight text-gray-600 uppercase"
+                >
+                    <dt class="sr-only">{ article.data.date }</dt>
+                    <dd><time datetime={ article.data.date }>{ article.data.date }</time></dd>
+                </dl>
+                <h1
+                        class="text-4xl mt-4 font-semibold tracking-tight text-gray-900 lg:text-5xl lg:text-balance"
+                >
+                    { article.data.title }
+                </h1>
+                <p class="mt-6 text-base font-medium text-gray-500 lg:text-balance">
+                    { article.data.excerpt }
+                </p>
+            </div>
+
+            <div class="mt-12 flex">
+                {article.rendered.metadata.headings && (
+                        <aside class="hidden lg:block">
+                            <h3>Table of Contents</h3>
+                            <ul class="text-gray-500 mt-4 text-sm list-none space-y-1" role="list">
+                                {article.rendered.metadata.headings.map(heading => (
+                                    <li class="hover:text-zinc-700 duration-150">
+                                        <a href={`#${heading.slug}`}>
+                                            { heading.text }
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </aside>
+                )}
+
+                <div class="mx-auto max-w-full">
+                    <Prose>
+                        <Content />
+                    </Prose>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
