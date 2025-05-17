@@ -6,6 +6,7 @@ import Prose from "../../components/Prose.astro";
 import ArticleHeader from "../../components/ArticleHeader.astro";
 import ArticleImage from "../../components/ArticleImage.astro";
 import TableOfContents from "../../components/TableOfContents.astro";
+import NewsletterSubscribe from "../../components/NewsletterSubscribe";
 
 interface ImageModule {
     default: ImageMetadata;
@@ -40,6 +41,10 @@ const { Content, headings } = await render(article);
                     <Prose>
                         <Content />
                     </Prose>
+
+                    <div class="pt-8">
+                        <NewsletterSubscribe client:visible />
+                    </div>
                 </div>
             </div>
         </div>
