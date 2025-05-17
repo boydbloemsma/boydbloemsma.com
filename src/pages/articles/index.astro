@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const articles = await getCollection('blog');
+---
+
+<Layout>
+    <a href="/">back</a>
+
+    <section>
+        <div class="px-8 py-24 mx-auto md:px-12 lg:px-24 max-w-7xl relative">
+            <div class="grid grid-cols-1 lg:grid-cols-3 items-end gap-12">
+                <div class="lg:col-span-2 max-w-2xl">
+                    <h1
+                            class="text-4xl mt-4 font-semibold tracking-tight sm:text-6xl lg:text-6xl text-gray-900 sm:text-balance"
+                    >
+                        Articles
+                    </h1>
+                    <p class="mt-6 text-base font-medium text-gray-500 lg:text-balance">
+                        Things I've written.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                    class="relative sm:pb-12 mt-12 pt-12 border-t grid grid-cols-1 lg:grid-cols-3 gap-12"
+            >
+                <div class="flex flex-col gap-12 lg:col-span-2">
+                    {articles.map(article => (
+                        <article class="relative group">
+                            <div class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-6 md:-inset-x-8 sm:rounded-2xl group-hover:bg-gray-100 duration-150"></div>
+                            <div class="relative">
+                                <div class="flex justify-between">
+                                    <dl>
+                                        <dt class="sr-only">{ article.data.date }</dt>
+                                        <dd class="text-xs text-gray-500">
+                                            <time datetime={ article.data.date }>{ article.data.date }</time>
+                                        </dd>
+                                    </dl>
+                                    <span class="text-xs text-gray-500">
+                                        todo views
+                                    </span>
+                                </div>
+                                <h3
+                                        class="mt-2 tracking-tight text-2xl font-medium text-gray-900 pt-8 lg:pt-0"
+                                >
+                                    { article.data.title }
+                                </h3>
+                                <div
+                                        class="mt-2 mb-4 text-base lg:text-lg text-gray-500 line-clamp-2"
+                                >
+                                    <p>
+                                        { article.data.excerpt }
+                                    </p>
+                                </div>
+                            </div>
+                            <a
+                                    class="flex items-center text-sm font-medium"
+                                    href={article.url}
+                            >
+                                <span class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl"></span>
+                                <span class="text-base text-gray-600 group-hover:text-gray-900 duration-150 relative">
+                                    Read more
+                                    <span class="sr-only">, { article.data.title }</span>
+                                </span>
+                            </a>
+                        </article>
+                    ))}
+                </div>
+                <div class="lg:ml-auto">
+                    <h3 class="text-xl font-semibold mb-4">
+                        Popular Articles
+                    </h3>
+                    <ul class="space-y-1 mt-4 text-gray-500 list-none text-sm" role="list">
+                        <li>
+                            <a href="" class="hover:text-zinc-700 duration-150">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
