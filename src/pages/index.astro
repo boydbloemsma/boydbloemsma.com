@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 import Button from "../components/Button.astro";
 
-const articles = await getCollection('blog');
+const articles = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
 ---
 
 <Layout>
