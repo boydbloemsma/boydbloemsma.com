@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 import Button from "../components/Button.astro";
+import articleViews from "../data/article-views.json";
 
 const articles = (await getCollection('blog'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -66,7 +67,7 @@ const articles = (await getCollection('blog'))
 										</dd>
 									</dl>
 									<span>
-										todo views
+										{articleViews[article.id] ? `${articleViews[article.id]} views` : '0 views'}
                 					</span>
 								</div>
 							</div>

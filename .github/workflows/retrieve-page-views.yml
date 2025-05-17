@@ -1,0 +1,37 @@
+name: Retrieve Page Views
+
+on:
+  schedule:
+    # Run every day at midnight UTC
+    - cron: '0 0 * * *'
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  retrieve-views:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Retrieve page views
+        run: node scripts/retrieve-page-views.js
+        env:
+          FATHOM_TOKEN: ${{ secrets.FATHOM_TOKEN }}
+      
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add src/data/article-views.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update article view counts" && git push)
