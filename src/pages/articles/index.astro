@@ -6,8 +6,6 @@ const articles = await getCollection('blog');
 ---
 
 <Layout>
-    <a href="/">back</a>
-
     <section>
         <div class="px-8 py-24 mx-auto md:px-12 lg:px-24 max-w-7xl relative">
             <div class="grid grid-cols-1 lg:grid-cols-3 items-end gap-12">
@@ -35,7 +33,7 @@ const articles = await getCollection('blog');
                                     <dl>
                                         <dt class="sr-only">{ article.data.date }</dt>
                                         <dd class="text-xs text-gray-500">
-                                            <time datetime={ article.data.date }>{ article.data.date }</time>
+                                            <time datetime={ article.data.date.toISOString().split('T')[0] }>{ article.data.date.toISOString().split('T')[0] }</time>
                                         </dd>
                                     </dl>
                                     <span class="text-xs text-gray-500">

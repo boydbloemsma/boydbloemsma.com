@@ -1,5 +1,7 @@
 ---
 import './src/styles/global.css';
+
+const { title = 'Boyd Bloemsma', description = "Boyd Bloemsma's little corner of the internet."} = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -8,9 +10,105 @@ import './src/styles/global.css';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Boyd Bloemsma</title>
+
+		<title>{title}</title>
+
+		<meta name="description" content={description} />
+
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="article" />
+
+		<meta property="twitter:card" content="summary" />
+		<meta property="twitter:site" content="@boyd_bloemsma" />
+		<meta property="twitter:creator" content="@boyd_bloemsma" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
 	</head>
 	<body>
+		<header class="px-4 py-3">
+			<div class="container mx-auto flex items-center justify-between">
+				<a href="/" class="flex items-center gap-2">
+					<span class="text-xl font-bold tracking-tight text-black">
+						boydbloemsma
+					</span>
+				</a>
+				<nav class="flex items-center gap-2 sm:gap-4 text-sm font-medium">
+					<a href="/" class="px-3 py-2 rounded-md hover:bg-zinc-100" aria-label="Home">
+						Home
+					</a>
+					<a href="/articles" class="px-3 py-2 rounded-md hover:bg-zinc-100" aria-label="Articles">
+						Articles
+					</a>
+					<a href="/now" class="px-3 py-2 rounded-md hover:bg-zinc-100" aria-label="'Now">
+						Now
+					</a>
+					<!--<a href="{{ route('feed') }}" class="p-2 rounded-md hover:bg-zinc-100 hidden sm:block" aria-label="Feed">-->
+					<!--	<x-icons.rss />-->
+					<!--</a>-->
+				</nav>
+			</div>
+		</header>
+
 		<slot />
+
+		<footer>
+			<div class="px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
+				<div class="pb-12 border-b border-zinc-300 xl:grid xl:grid-cols-3 xl:gap-8">
+					<div>
+						<p class="text-2xl font-bold uppercase">boydbloemsma</p>
+						<p class="mt-2 text-sm font-medium text-zinc-500 lg:w-4/5">
+							Please keep reading, I need this.
+						</p>
+					</div>
+					<div class="grid grid-cols-2 gap-8 mt-12 text-sm font-medium text-zinc-500 lg:grid-cols-3 lg:mt-0 xl:col-span-2">
+						<div>
+							<h3 class="text-base text-black">Socials</h3>
+							<ul role="list" class="mt-4 space-y-2">
+								<li>
+									<a href="https://x.com/boyd_bloemsma" target="_blank" class="hover:text-black">
+										@boyd_bloemsma
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="text-base text-black">Projects</h3>
+							<ul role="list" class="mt-4 space-y-2">
+								<li>
+									<a href="https://shelveless.com/" class="hover:text-black">
+										Shelveless
+									</a>
+								</li>
+								<li>
+									<a href="https://localpantry.shop/" class="hover:text-black">
+										localpantry.shop
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="mt-12 md:mt-0">
+							<h3 class="text-base text-black">Information</h3>
+							<ul role="list" class="mt-4 space-y-2">
+								<li>
+									<a href="/now" class="hover:text-black">
+										Now
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col pt-12 md:flex-row md:items-center md:justify-between">
+                    <span class="text-sm font-medium text-zinc-500">
+                      Copyright 2021 - 2025
+						<a aria-label="Boyd Bloemsma" href="https://x.com/boyd_bloemsma" target="_blank" class="mx-2 text-black hover:text-zinc-700">
+                          Boyd Bloemsma
+                      </a>
+                    </span>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
+
