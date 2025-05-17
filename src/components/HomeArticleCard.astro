@@ -1,0 +1,30 @@
+---
+const { article, views } = Astro.props;
+---
+<article class="relative isolate flex flex-col gap-8">
+    <div class="flex flex-col justify-between">
+        <div>
+            <h3
+                class="tracking-tight text-xl font-medium text-gray-900 pt-8 lg:pt-0"
+            >
+                <a href={`/articles/${article.id}`}><span class="absolute inset-0"></span>{ article.data.title }</a>
+            </h3>
+            <div class="mt-2 mb-4 text-base text-gray-500 line-clamp-3">
+                <p>{ article.data.excerpt }</p>
+            </div>
+        </div>
+        <div class="mt-6">
+            <div class="text-xs text-gray-500 leading-6 flex justify-between">
+                <dl>
+                    <dt class="sr-only">{ article.data.date.toISOString().split('T')[0] }</dt>
+                    <dd>
+                        <time datetime={ article.data.date.toISOString().split('T')[0] }>{ article.data.date.toISOString().split('T')[0] }</time>
+                    </dd>
+                </dl>
+                <span>
+                    {views ? `${views} views` : '0 views'}
+                </span>
+            </div>
+        </div>
+    </div>
+</article>

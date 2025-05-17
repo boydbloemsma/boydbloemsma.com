@@ -1,9 +1,11 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import Prose from "../../components/Prose.astro";
+import ArticleHeader from "../../components/ArticleHeader.astro";
+import ArticleImage from "../../components/ArticleImage.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
 
 interface ImageModule {
     default: ImageMetadata;
@@ -27,48 +29,12 @@ const { Content, headings } = await render(article);
 <Layout title={article.data.title} description={article.data.excerpt}>
     <section>
         <div class="px-8 py-24 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
-            <div>
-                <dl
-                        class="font-mono text-xs font-medium tracking-tight text-gray-600 uppercase"
-                >
-                    <dt class="sr-only">{ article.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }</dt>
-                    <dd><time datetime={ article.data.date.toISOString().split('T')[0] }>{ article.data.date.toISOString().split('T')[0] }</time></dd>
-                </dl>
-                <h1
-                        class="text-4xl mt-4 font-semibold tracking-tight text-gray-900 lg:text-5xl lg:text-balance"
-                >
-                    { article.data.title }
-                </h1>
-                <p class="mt-6 text-base font-medium text-gray-500 lg:text-balance">
-                    { article.data.excerpt }
-                </p>
-            </div>
+            <ArticleHeader article={article} />
 
-            {article.data.image && images[`../../images/${article.data.image}`] && (
-                <div class="block w-full lg:col-span-2 mt-12">
-                    <Image
-                            class="shadow rounded-2xl aspect-[4/3] max-h-96 object-cover object-center w-full"
-                            src={images[`../../images/${article.data.image}`].default}
-                            alt={article.data.title}
-                    />
-                </div>
-            )}
+            <ArticleImage article={article} images={images} />
 
             <div class="mt-12 flex">
-                {headings && headings.length > 0 && (
-                        <aside class="hidden lg:block">
-                            <h3>Table of Contents</h3>
-                            <ul class="text-gray-500 mt-4 text-sm list-none space-y-1" role="list">
-                                {headings.map(heading => (
-                                    <li class="hover:text-zinc-700 duration-150">
-                                        <a href={`#${heading.slug}`}>
-                                            { heading.text }
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </aside>
-                )}
+                <TableOfContents headings={headings} />
 
                 <div class="mx-auto max-w-full">
                     <Prose>

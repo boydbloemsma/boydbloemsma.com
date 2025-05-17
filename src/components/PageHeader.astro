@@ -1,0 +1,14 @@
+---
+const { title, description } = Astro.props;
+---
+<div class="grid grid-cols-1 lg:grid-cols-3 items-end gap-12">
+    <div class="lg:col-span-2 max-w-2xl">
+        <h1
+                class="text-4xl mt-4 font-semibold tracking-tight sm:text-6xl lg:text-6xl text-gray-900 sm:text-balance"
+        >
+            {title}
+        </h1>
+        <p class="mt-6 text-base font-medium text-gray-500 lg:text-balance" set:html={description}>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+---
+const { articles } = Astro.props;
+---
+<div class="lg:ml-auto">
+    <h3 class="text-xl font-semibold mb-4">
+        Popular Articles
+    </h3>
+    <ul class="space-y-1 mt-4 text-gray-500 list-none text-sm" role="list">
+        {articles.map(article =>
+            <li>
+                <a href={`/articles/${article.id}`} class="hover:text-zinc-700 duration-150">
+                    { article.data.title }
+                </a>
+            </li>
+        )}
+    </ul>
+</div>

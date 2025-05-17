@@ -1,0 +1,41 @@
+---
+const { article, views } = Astro.props;
+---
+<article class="relative group">
+    <div class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-6 md:-inset-x-8 sm:rounded-2xl group-hover:bg-gray-100 duration-150"></div>
+    <div class="relative">
+        <div class="flex justify-between">
+            <dl>
+                <dt class="sr-only">{ article.data.date }</dt>
+                <dd class="text-xs text-gray-500">
+                    <time datetime={ article.data.date.toISOString().split('T')[0] }>{ article.data.date.toISOString().split('T')[0] }</time>
+                </dd>
+            </dl>
+            <span class="text-xs text-gray-500">
+                {views ? `${views} views` : '0 views'}
+            </span>
+        </div>
+        <h3
+                class="mt-2 tracking-tight text-2xl font-medium text-gray-900 pt-8 lg:pt-0"
+        >
+            { article.data.title }
+        </h3>
+        <div
+                class="mt-2 mb-4 text-base lg:text-lg text-gray-500 line-clamp-2"
+        >
+            <p>
+                { article.data.excerpt }
+            </p>
+        </div>
+    </div>
+    <a
+            class="flex items-center text-sm font-medium"
+            href={`/articles/${article.id}`}
+    >
+        <span class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl"></span>
+        <span class="text-base text-gray-600 group-hover:text-gray-900 duration-150 relative">
+            Read more
+            <span class="sr-only">, { article.data.title }</span>
+        </span>
+    </a>
+</article>

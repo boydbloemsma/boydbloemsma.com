@@ -1,135 +1,21 @@
 ---
 import '../../src/styles/global.css';
+import Head from '../components/Head.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const { title = 'Boyd Bloemsma', description = "Boyd Bloemsma's little corner of the internet."} = Astro.props;
-const pathname = Astro.url.pathname;
-const isProduction = import.meta.env.MODE === 'production';
 ---
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon-32x32.png" />
-		<meta name="generator" content={Astro.generator} />
-
-		<link
-			rel="alternate"
-			type="application/ress+xml"
-			title={title}
-			href={new URL("feed.xml", Astro.site)}
-		/>
-
-		<link rel="sitemap" href="/sitemap-index.xml" />
-
-		<title>{title}</title>
-
-		<meta name="description" content={description} />
-
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:type" content="article" />
-		<meta property="og:url" content={Astro.url} />
-
-		<meta property="twitter:card" content="summary" />
-		<meta property="twitter:site" content="@boyd_bloemsma" />
-		<meta property="twitter:creator" content="@boyd_bloemsma" />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-
-		<link rel="canonical" href={Astro.url} />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<link rel="manifest" href="/site.webmanifest" />
-
-		{isProduction && <script src="https://cdn.usefathom.com/script.js" data-site="XCVRIKRE" defer />}
+		<Head title={title} description={description} />
 	</head>
 	<body>
-		<header class="px-4 py-3">
-			<div class="container mx-auto flex items-center justify-between">
-				<a href="/" class="flex items-center gap-2">
-					<span class="text-xl font-bold tracking-tight text-black">
-						boydbloemsma
-					</span>
-				</a>
-				<nav class="flex items-center gap-2 sm:gap-4 text-sm font-medium">
-					<a href="/" class={`px-3 py-2 rounded-md hover:bg-zinc-100 ${pathname === '/' ? 'bg-zinc-100 text-black' : ''}`} aria-label="Home">
-						Home
-					</a>
-					<a href="/articles" class={`px-3 py-2 rounded-md hover:bg-zinc-100 ${pathname.startsWith('/articles') ? 'bg-zinc-100 text-black' : ''}`} aria-label="Articles">
-						Articles
-					</a>
-					<a href="/now" class={`px-3 py-2 rounded-md hover:bg-zinc-100 ${pathname === '/now' ? 'bg-zinc-100 text-black' : ''}`} aria-label="'Now">
-						Now
-					</a>
-					<a href="/feed.xml" class={`p-2 rounded-md hover:bg-zinc-100 hidden sm:block ${pathname === '/feed' ? 'bg-zinc-100 text-black' : ''}`} aria-label="Feed">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-							<path fill-rule="evenodd" d="M3.75 4.5a.75.75 0 0 1 .75-.75h.75c8.284 0 15 6.716 15 15v.75a.75.75 0 0 1-.75.75h-.75a.75.75 0 0 1-.75-.75v-.75C18 11.708 12.292 6 5.25 6H4.5a.75.75 0 0 1-.75-.75V4.5Zm0 6.75a.75.75 0 0 1 .75-.75h.75a8.25 8.25 0 0 1 8.25 8.25v.75a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.75a6 6 0 0 0-6-6H4.5a.75.75 0 0 1-.75-.75v-.75Zm0 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
-						</svg>
-					</a>
-				</nav>
-			</div>
-		</header>
+		<Header />
 
 		<slot />
 
-		<footer>
-			<div class="px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
-				<div class="pb-12 border-b border-zinc-300 xl:grid xl:grid-cols-3 xl:gap-8">
-					<div>
-						<p class="text-2xl font-bold uppercase">boydbloemsma</p>
-						<p class="mt-2 text-sm font-medium text-zinc-500 lg:w-4/5">
-							Please keep reading, I need this.
-						</p>
-					</div>
-					<div class="grid grid-cols-2 gap-8 mt-12 text-sm font-medium text-zinc-500 lg:grid-cols-3 lg:mt-0 xl:col-span-2">
-						<div>
-							<h3 class="text-base text-black">Socials</h3>
-							<ul role="list" class="mt-4 space-y-2">
-								<li>
-									<a href="https://x.com/boyd_bloemsma" target="_blank" class="hover:text-black">
-										@boyd_bloemsma
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div>
-							<h3 class="text-base text-black">Projects</h3>
-							<ul role="list" class="mt-4 space-y-2">
-								<li>
-									<a href="https://shelveless.com/" class="hover:text-black">
-										Shelveless
-									</a>
-								</li>
-								<li>
-									<a href="https://localpantry.shop/" class="hover:text-black">
-										localpantry.shop
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div class="mt-12 md:mt-0">
-							<h3 class="text-base text-black">Information</h3>
-							<ul role="list" class="mt-4 space-y-2">
-								<li>
-									<a href="/now" class="hover:text-black">
-										Now
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="flex flex-col pt-12 md:flex-row md:items-center md:justify-between">
-                    <span class="text-sm font-medium text-zinc-500">
-                      Copyright 2021 - 2025
-						<a aria-label="Boyd Bloemsma" href="https://x.com/boyd_bloemsma" target="_blank" class="mx-2 text-black hover:text-zinc-700">
-                          Boyd Bloemsma
-                      </a>
-                    </span>
-				</div>
-			</div>
-		</footer>
+		<Footer />
 	</body>
 </html>

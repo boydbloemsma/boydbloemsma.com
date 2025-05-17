@@ -1,0 +1,40 @@
+---
+const { title = 'Boyd Bloemsma', description = "Boyd Bloemsma's little corner of the internet."} = Astro.props;
+const isProduction = import.meta.env.MODE === 'production';
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/svg+xml" href="/favicon-32x32.png" />
+<meta name="generator" content={Astro.generator} />
+
+<link
+    rel="alternate"
+    type="application/ress+xml"
+    title={title}
+    href={new URL("feed.xml", Astro.site)}
+/>
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<title>{title}</title>
+
+<meta name="description" content={description} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="article" />
+<meta property="og:url" content={Astro.url} />
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="@boyd_bloemsma" />
+<meta property="twitter:creator" content="@boyd_bloemsma" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+
+<link rel="canonical" href={Astro.url} />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+{isProduction && <script src="https://cdn.usefathom.com/script.js" data-site="XCVRIKRE" defer />}

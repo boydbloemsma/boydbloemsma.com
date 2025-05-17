@@ -1,0 +1,19 @@
+---
+const { article } = Astro.props;
+---
+<div>
+    <dl
+            class="font-mono text-xs font-medium tracking-tight text-gray-600 uppercase"
+    >
+        <dt class="sr-only">{ article.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }</dt>
+        <dd><time datetime={ article.data.date.toISOString().split('T')[0] }>{ article.data.date.toISOString().split('T')[0] }</time></dd>
+    </dl>
+    <h1
+            class="text-4xl mt-4 font-semibold tracking-tight text-gray-900 lg:text-5xl lg:text-balance"
+    >
+        { article.data.title }
+    </h1>
+    <p class="mt-6 text-base font-medium text-gray-500 lg:text-balance">
+        { article.data.excerpt }
+    </p>
+</div>

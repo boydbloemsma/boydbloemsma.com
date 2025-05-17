@@ -1,20 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Layout>
     <section>
         <div class="px-8 py-16 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
-            <div>
-                <h1
-                        class="text-4xl mt-4 font-semibold tracking-tight text-gray-900 lg:text-5xl lg:text-balance"
-                >
-                    Now
-                </h1>
-                <p class="mt-6 text-base font-medium text-gray-500">
-                    This is a <a href="https://nownownow.com/about" target="_blank" class="text-black underline decoration-zinc-300 hover:text-zinc-700">now</a> page.
-                </p>
-            </div>
+            <PageHeader 
+                title="Now" 
+                description={`This is a <a href="https://nownownow.com/about" target="_blank" class="text-black underline decoration-zinc-300 hover:text-zinc-700">now</a> page.`}
+            />
             <div class="mt-12">
                 <p>
                     I have just launched my first project. <br />

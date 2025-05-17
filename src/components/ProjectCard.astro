@@ -1,0 +1,16 @@
+---
+const { title, description, url } = Astro.props;
+---
+<div>
+    <div class="text-left select-none text-gray-900">
+        {title}
+    </div>
+    <div class="mt-2 text-sm text-gray-500">
+        {description}
+    </div>
+    <div class="mt-2">
+        <a href={url} target="_blank" class="text-black underline decoration-zinc-300 hover:text-zinc-700">
+            {url}
+        </a>
+    </div>
+</div>
