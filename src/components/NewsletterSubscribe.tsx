@@ -51,7 +51,7 @@ const NewsletterSubscribe: React.FC<NewsletterSubscribeProps> = ({ className = '
       setEmail('');
     } catch (error) {
       setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'An unknown error occurred');
+      setErrorMessage('An unknown error occurred');
     }
   };
 
