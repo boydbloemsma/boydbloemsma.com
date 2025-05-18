@@ -3,6 +3,7 @@ title: Building my first SAAS using Laravel
 excerpt: I think it's especially hard for developers to think of these things, because we are used to thinking in solutions instead of problems.
 date: 2024-09-08
 image: img20241027_20130866.webp
+tags: ["Laravel", "SAAS", "Development"]
 ---
 
 I've been on the lookout for a SAAS idea for a while now. It had to be a problem that I had to deal with myself, and other people as well. I think it's especially hard for developers to think of these things, because we are used to thinking in solutions instead of problems. So when a good friend of mine came to me with this idea is was ecstatic. 

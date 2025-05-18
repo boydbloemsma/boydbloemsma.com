@@ -3,6 +3,7 @@ title: Laravel OG images
 excerpt: Because we don't want to have to manually create an image for every article, we can use The OG package which will do all the hard work for us.
 date: 2024-04-20
 image: img20241027_20201795.webp
+tags: ["Laravel", "Images", "SEO"]
 ---
 
 I received some feedback about the way my articles look when shared, to improve this I decided to add OG images.

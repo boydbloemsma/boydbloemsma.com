@@ -3,6 +3,7 @@ title: Hosting Laravel applications statically
 excerpt: In this article we will be going over how to I used laravel-export to deploy the very blog you're reading right now; to Cloudflare Pages, Netlify and Vercel.
 date: 2024-01-11
 image: img20241027_20271180.webp
+tags: ["Laravel", "Static Sites", "Deployment"]
 ---
 
 Earlier this week Spatie released a new package called [laravel-export](https://github.com/spatie/laravel-export), which bundles your Laravel application into a statically host-able website.

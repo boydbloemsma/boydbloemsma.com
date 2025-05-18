@@ -3,6 +3,7 @@ title: Git submodules for dummies
 excerpt: A great option to share code between multiple projects is by using git submodules, but there are a few things you need to keep in mind.
 date: 2024-03-24
 image: img20241027_20215192.webp
+tags: ["Git", "Development"]
 ---
 
 A great option to share code between multiple projects is by using git submodules, but there are a few things you need to keep in mind.

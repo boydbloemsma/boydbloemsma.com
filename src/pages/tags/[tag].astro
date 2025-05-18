@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import articleViews from "../../data/article-views.json";
+import PageHeader from "../../components/PageHeader.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+
+export async function getStaticPaths() {
+    const articles = await getCollection('blog');
+
+    // Create a map to store articles by tag
+    const tagMap = new Map();
+
+    // Collect all unique tags and their associated articles
+    articles.forEach(article => {
+        if (article.data.tags && article.data.tags.length > 0) {
+            article.data.tags.forEach(tag => {
+                if (!tagMap.has(tag)) {
+                    tagMap.set(tag, []);
+                }
+                tagMap.get(tag).push(article);
+            });
+        }
+    });
+
+    // Create a path for each tag with pre-filtered articles
+    return Array.from(tagMap.entries()).map(([tag, tagArticles]) => ({
+        params: { tag },
+        props: { 
+            tag,
+            articles: tagArticles.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        }
+    }));
+}
+
+const { tag, articles } = Astro.props;
+---
+
+<Layout title={`Articles tagged with "${tag}"`}>
+    <section>
+        <div class="px-8 py-24 mx-auto md:px-12 lg:px-24 max-w-7xl relative">
+            <PageHeader 
+                title={`Articles tagged with "${tag}"`} 
+                description={`All articles related to ${tag}.`} 
+            />
+
+            <div class="relative sm:pb-12 mt-12 pt-12 border-t border-gray-200">
+                <div class="flex flex-col gap-12">
+                    {articles.length > 0 ? (
+                        articles.map(article =>
+                            <ArticleCard 
+                                article={article} 
+                                views={articleViews[article.id]} 
+                            />
+                        )
+                    ) : (
+                        <p class="text-gray-500">No articles found with this tag.</p>
+                    )}
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

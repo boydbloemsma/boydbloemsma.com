@@ -3,6 +3,7 @@ title: Deploying Laravel Reverb in production
 excerpt: Once I had completed a proof of concept and was ready to deploy it, however, the trouble started for me.
 date: 2024-06-01
 image: img20241027_20192315.webp
+tags: ["Laravel", "Reverb", "Deployment"]
 ---
 
 To improve my skill set, I decided it might be fun to create a real-time chat application where users can create rooms and send messages. 
@@ -22,7 +23,7 @@ You can find this option under Manage > Tenents.
 ```nginx
 server {
     ...
- 
+
     location / {
         proxy_http_version 1.1;
         proxy_set_header Host $http_host;
@@ -32,10 +33,10 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
- 
+
         proxy_pass http://0.0.0.0:8080;
     }
- 
+
     ...
 }
 ```

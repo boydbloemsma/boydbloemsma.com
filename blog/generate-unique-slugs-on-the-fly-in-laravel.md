@@ -3,6 +3,7 @@ title: Generate unique slugs on-the-fly in Laravel
 excerpt: Have you ever wondered how YouTube video IDs work?
 date: 2023-12-13
 image: img20241027_20165163.webp
+tags: ["Laravel", "Slugs", "Database"]
 ---
 
 Have you ever wondered how YouTube video IDs work?
@@ -109,19 +110,19 @@ Route::post('/videos', function (\Illuminate\Http\Request $request) {
             ->where('type', 'key_generation')  
             ->lockForUpdate()  
             ->get();  
-  
+
         $sqids = new Sqids\Sqids(  
             'uMUfSYvtV01cybOINeEKh4BXFHQT8oaL2mJg79AWwrnqCZp5zsi3dkj6DRPGlx',  
             5  
         );  
-  
+
         $id = Video::max('id') ?? 0;  
-  
+
         do {  
             $id++;  
             $key = $sqids->encode([$id]);  
         } while (Video::where('url_key', $key)->exists());  
-  
+
         Video::create([  
             'url_key' => $key,  
             'title' => $request->title,  

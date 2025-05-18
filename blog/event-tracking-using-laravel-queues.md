@@ -3,6 +3,7 @@ title: Event tracking using Laravel queues
 excerpt: To provide the best user experience on your website you first need to understand the user, this is what event tracking is for.
 date: 2024-01-01
 image: img20241027_20262870.webp
+tags: ["Laravel", "Queues", "API"]
 ---
 
 To provide the best user experience on your website you first need to understand the user, this is what event tracking is for.

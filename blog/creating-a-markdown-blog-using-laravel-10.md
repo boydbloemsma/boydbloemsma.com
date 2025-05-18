@@ -2,6 +2,7 @@
 title: Creating a markdown blog using Laravel 10
 excerpt: Before we can start this article I have a confession to make; I'm a back-end developer.
 date: 2023-12-06
+tags: ["Laravel", "Markdown", "Blog"]
 ---
 
 Before we can start this article I have a confession to make; I'm a back-end developer.
@@ -32,9 +33,9 @@ To do this I created the following code:
 
 ```php
 <?php  
-  
+
 namespace App\Models;  
-  
+
 use Illuminate\Database\Eloquent\Model;  
 use Illuminate\Filesystem\Filesystem;  
 use Illuminate\Support\Carbon;  
@@ -44,26 +45,26 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;  
 use Sushi\Sushi;
-  
+
 class Article extends Model
 {  
     use Sushi;
-  
+
     public function getRows(): array 
     {  
 		$environment = (new Environment())
 		    ->addExtension(new CommonMarkCoreExtension());
 		$converter = new MarkdownConverter($environment);
-        
+
         $filesystem = new FileSystem(); 
         $articles = [];  
         foreach (File::allFiles(app_path('articles')) as $file) {  
             $slug = $file->getFilenameWithoutExtension();  
             $filename = $file->getRelativePathName();  
             $file = $filesystem->get(app_path("articles/$filename"));
-  
+
             $object = YamlFrontMatter::parse($file);  
-  
+
             $articles[] = [ 
                 'title' => $object->matter('title'),  
                 'excerpt' => $object->matter('excerpt'),  
@@ -72,7 +73,7 @@ class Article extends Model
                 'body' =>  $converter->convert($object->body()),
             ]; 
         }  
-  
+
         return $articles;
     }
 }
@@ -84,9 +85,9 @@ It might look like a lot is happening in this code block but it really isn't tha
 
 ```php
 <?php  
-  
+
 namespace App\Models;  
-  
+
 use Illuminate\Database\Eloquent\Model;  
 use Illuminate\Filesystem\Filesystem;  
 use Illuminate\Support\Carbon;  
@@ -96,26 +97,26 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;  
 use Sushi\Sushi;
-  
+
 class Article extends Model // [tl! focus:start]
 {  
     use Sushi;
-  
+
     public function getRows(): array // [tl! focus:end]
     {  
 		$environment = (new Environment())
 		    ->addExtension(new CommonMarkCoreExtension());
 		$converter = new MarkdownConverter($environment);
-        
+
         $filesystem = new FileSystem(); // [tl! focus:start]
         $articles = [];  
         foreach (File::allFiles(app_path('articles')) as $file) {  
             $slug = $file->getFilenameWithoutExtension();  
             $filename = $file->getRelativePathName();  
             $file = $filesystem->get(app_path("articles/$filename")); // [tl! focus:end]
-  
+
             $object = YamlFrontMatter::parse($file);  
-  
+
             $articles[] = [ // [tl! focus]
                 'title' => $object->matter('title'),  
                 'excerpt' => $object->matter('excerpt'),  
@@ -124,7 +125,7 @@ class Article extends Model // [tl! focus:start]
                 'body' =>  $converter->convert($object->body()),
             ]; // [tl! focus:start]
         }  
-  
+
         return $articles;
     } // [tl! focus:end]
 }
@@ -139,9 +140,9 @@ The Sushi package takes the array we return in the `getRows` method and turns th
 
 ```php
 <?php  
-  
+
 namespace App\Models;  
-  
+
 use Illuminate\Database\Eloquent\Model;  
 use Illuminate\Filesystem\Filesystem;  
 use Illuminate\Support\Carbon;  
@@ -151,26 +152,26 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;  
 use Sushi\Sushi;
-  
+
 class Article extends Model
 {  
     use Sushi;
-  
+
     public function getRows(): array
     {  
 		$environment = (new Environment()) // [tl! focus:start]
 		    ->addExtension(new CommonMarkCoreExtension());
 		$converter = new MarkdownConverter($environment); // [tl! focus:end]
-        
+
         $filesystem = new FileSystem();
         $articles = [];  
         foreach (File::allFiles(app_path('articles')) as $file) {  
             $slug = $file->getFilenameWithoutExtension();  
             $filename = $file->getRelativePathName();  
             $file = $filesystem->get(app_path("articles/$filename"));
-  
+
             $object = YamlFrontMatter::parse($file); // [tl! focus]
-  
+
             $articles[] = [
                 'title' => $object->matter('title'),  // [tl! focus:start]
                 'excerpt' => $object->matter('excerpt'),  
@@ -179,7 +180,7 @@ class Article extends Model
                 'body' =>  $converter->convert($object->body()), // [tl! focus]
             ];
         }  
-  
+
         return $articles;
     }
 }
@@ -195,7 +196,7 @@ Route::prefix('/articles')->group(function () {
         $articles = Article::all();  
         return view('pages.articles.index', ['articles' => $articles]);  
     })->name('articles.index');  
-  
+
     Route::get('/{article:slug}', function (Article $article) {  
         return view('pages.articles.show', ['article' => $article]);  
     })->name('articles.show');  

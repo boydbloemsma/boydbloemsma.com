@@ -3,6 +3,7 @@ title: PHP's built-in web server
 excerpt: Sometimes the easiest solution is the best solution.
 date: 2024-01-07
 image: img20241027_20245253.webp
+tags: ["PHP", "Laravel", "Development"]
 ---
 
 A little while ago I had to POST some data to an endpoint which did not exist yet.

@@ -3,6 +3,7 @@ title: Simplicity is the ultimate sophistication
 excerpt: This idea permeates through my entire life. The idea that to make something simple to use a lot of effort is needed.
 date: 2024-10-26
 image: img20241027_20210635.webp
+tags: ["Web Development", "Performance", "Optimization"]
 ---
 
 This idea permeates through my entire life. 
@@ -55,4 +56,3 @@ Every deploy I purge the Cloudflare cache and every time a page is visited Cloud
 ## Conclusion
 
 Always remember, when things look simple you can bet someone put a lot of work in to make it seem that way!
-

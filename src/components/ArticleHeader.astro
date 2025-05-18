@@ -1,4 +1,5 @@
 ---
+import Tag from './Tag.astro';
 const { article } = Astro.props;
 ---
 <div>
@@ -13,6 +14,13 @@ const { article } = Astro.props;
     >
         { article.data.title }
     </h1>
+    {article.data.tags && article.data.tags.length > 0 && (
+        <div class="mt-4 flex flex-wrap">
+            {article.data.tags.map((tag) => (
+                <Tag name={tag} />
+            ))}
+        </div>
+    )}
     <p class="mt-6 text-base font-medium text-gray-500 lg:text-balance">
         { article.data.excerpt }
     </p>
