@@ -6,7 +6,7 @@ const { article, images } = Astro.props;
 {article.data.image && images[`../../images/${article.data.image}`] && (
     <div class="block w-full lg:col-span-2 mt-12">
         <Image
-                class="shadow rounded-2xl aspect-[4/3] max-h-96 object-cover object-center w-full"
+                class="shadow rounded-2xl aspect-[4/3] max-h-96 object-cover object-center w-full bg-stone-100"
                 src={images[`../../images/${article.data.image}`].default}
                 alt={article.data.title}
                 width={1024}
