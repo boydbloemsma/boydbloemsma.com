@@ -6,7 +6,7 @@ const { headings } = Astro.props;
         <h3>Table of Contents</h3>
         <ul class="text-gray-500 mt-4 text-sm list-none space-y-1" role="list">
             {headings.map(heading => (
-                <li class="hover:text-zinc-700 duration-150">
+                <li class="hover:text-zinc-700 duration-150" style={`padding-left: ${ (heading.depth - 2) }rem;`}>
                     <a href={`#${heading.slug}`}>
                         { heading.text }
                     </a>

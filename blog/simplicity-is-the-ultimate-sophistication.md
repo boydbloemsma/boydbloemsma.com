@@ -41,7 +41,7 @@ Well I lied.
 Every deployment I will check for articles which don't have an OG image yet and generate it.
 This increases the likelihood people click on my articles when sharing them on social media.
 
-## Retrieving page views
+### Retrieving page views
 
 I use Fathom Analytics to see which of my articles people view the most.
 This gives me feedback for what people might want to see in the future.
