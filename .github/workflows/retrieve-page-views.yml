@@ -34,4 +34,4 @@ jobs:
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'actions@github.com'
           git add src/data/article-views.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update article view counts" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update article view counts" && git push)
