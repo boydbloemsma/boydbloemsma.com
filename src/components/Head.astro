@@ -1,7 +1,11 @@
 ---
-const { title = 'Boyd Bloemsma', description = "Boyd Bloemsma's little corner of the internet."} = Astro.props;
-const isProduction = import.meta.env.MODE === 'production';
+const {
+    title = "Boyd Bloemsma",
+    description = "Boyd Bloemsma's little corner of the internet.",
+} = Astro.props;
+const isProduction = import.meta.env.MODE === "production";
 ---
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/svg+xml" href="/favicon-32x32.png" />
@@ -37,4 +41,21 @@ const isProduction = import.meta.env.MODE === 'production';
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
-{isProduction && <script src="https://cdn.usefathom.com/script.js" data-site="XCVRIKRE" defer />}
+{
+    isProduction && (
+        <script
+            src="https://cdn.usefathom.com/script.js"
+            data-site="XCVRIKRE"
+            defer
+        />
+    )
+}
+{
+    isProduction && (
+        <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="38f02014-32b3-4800-96f1-c58b342515da"
+        />
+    )
+}

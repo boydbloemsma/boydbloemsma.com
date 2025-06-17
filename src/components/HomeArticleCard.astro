@@ -1,4 +1,11 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  article: CollectionEntry<'blog'>;
+  views?: string | undefined;
+}
+
 const { article, views } = Astro.props;
 ---
 <article class="relative isolate flex flex-col gap-8">
@@ -22,7 +29,7 @@ const { article, views } = Astro.props;
                     </dd>
                 </dl>
                 <span>
-                    {views ? `${views} views` : '0 views'}
+                    {views !== undefined ? `${views} views` : '0 views'}
                 </span>
             </div>
         </div>

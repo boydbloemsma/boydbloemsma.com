@@ -2,10 +2,12 @@
 import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 import Button from "../components/Button.astro";
-import articleViews from "../data/article-views.json";
+import articleViewsData from "../data/article-views.json";
 import SectionHeader from "../components/SectionHeader.astro";
 import HomeArticleCard from "../components/HomeArticleCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+
+const articleViews: Record<string, string> = articleViewsData;
 
 const articles = (await getCollection('blog'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -40,7 +42,7 @@ const articles = (await getCollection('blog'))
 				{articles.map(article =>
 					<HomeArticleCard 
 						article={article} 
-						views={articleViews[article.id]} 
+						views={articleViews[article.id] ?? "0"} 
 					/>
 				)}
 			</div>
