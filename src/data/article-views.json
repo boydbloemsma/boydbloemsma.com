@@ -1,7 +1,7 @@
 {
   "event-tracking-using-laravel-queues": "152",
-  "deploying-laravel-reverb-in-production": "1311",
-  "building-my-first-saas-using-laravel": "44",
+  "deploying-laravel-reverb-in-production": "1312",
+  "building-my-first-saas-using-laravel": "45",
   "creating-a-markdown-blog-using-laravel-10": "99",
   "simplicity-is-the-ultimate-sophistication": "97",
   "hosting-laravel-applications-statically": "1646",
@@ -9,5 +9,5 @@
   "php-s-built-in-web-server": "24",
   "laravel-og-images": "40",
   "generate-unique-slugs-on-the-fly-in-laravel": "199",
-  "rewriting-my-blog-in-astro": "8"
+  "rewriting-my-blog-in-astro": "9"
 }
