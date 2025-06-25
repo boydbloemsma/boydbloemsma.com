@@ -3,32 +3,37 @@ name: Retrieve Page Views
 on:
   schedule:
     # Run every day at midnight UTC
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
   # Allow manual triggering
   workflow_dispatch:
 
 jobs:
   retrieve-views:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          cache: 'npm'
-      
+          node-version: "18"
+          cache: "pnpm"
+
       - name: Install dependencies
-        run: npm ci
-      
+        run: pnpm install --frozen-lockfile
+
       - name: Retrieve page views
         run: node scripts/retrieve-page-views.js
         env:
           FATHOM_TOKEN: ${{ secrets.FATHOM_TOKEN }}
-      
+
       - name: Commit and push if changes
         run: |
           git config --global user.name 'GitHub Actions Bot'
