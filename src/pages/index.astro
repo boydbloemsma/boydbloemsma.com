@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import articleViewsData from "../data/article-views.json";
 import SectionHeader from "../components/SectionHeader.astro";
@@ -9,71 +9,76 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 const articleViews: Record<string, string> = articleViewsData;
 
-const articles = (await getCollection('blog'))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+const articles = (await getCollection("blog"))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3);
 ---
 
 <Layout>
-	<section>
-		<div class="px-8 py-16 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
-			<div class="max-w-2xl lg:flex-auto">
-				<h1
-					class="text-4xl mt-4 font-semibold tracking-tight text-gray-900 lg:text-5xl lg:text-balance"
-				>
-					About me
-				</h1>
-				<p class="text-base font-medium mt-4 text-gray-500">
-					Hey, I'm Boyd Bloemsma.
-					I'm a software developer and tinkerer.
-					I love making things and having lots of
-					<a href="#projects" class="text-black underline decoration-zinc-300 hover:text-zinc-700">side projects</a>
-					going.
-				</p>
-			</div>
-		</div>
-	</section>
+    <section>
+        <div class="px-8 py-16 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
+            <div class="max-w-2xl lg:flex-auto">
+                <h1
+                    class="text-4xl mt-4 font-semibold tracking-tight text-gray-900 lg:text-5xl lg:text-balance"
+                >
+                    About me
+                </h1>
+                <p class="text-base font-medium mt-4 text-gray-500">
+                    Hey, I'm Boyd Bloemsma. I'm a software developer and
+                    tinkerer. I love making things and having lots of
+                    <a
+                        href="#projects"
+                        class="text-black underline decoration-zinc-300 hover:text-zinc-700"
+                        >side projects</a
+                    >
+                    going.
+                </p>
+            </div>
+        </div>
+    </section>
 
-	<section>
-		<div class="px-8 py-16 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
-			<SectionHeader title="Recent articles" />
+    <section>
+        <div class="px-8 py-16 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
+            <SectionHeader title="Recent articles" />
 
-			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
-				{articles.map(article =>
-					<HomeArticleCard 
-						article={article} 
-						views={articleViews[article.id] ?? "0"} 
-					/>
-				)}
-			</div>
+            <div
+                class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10"
+            >
+                {
+                    articles.map((article) => (
+                        <HomeArticleCard
+                            article={article}
+                            views={articleViews[article.id] ?? "0"}
+                        />
+                    ))
+                }
+            </div>
 
-			<div class="mt-6">
-				<Button href="/articles">
-					Read more articles
-				</Button>
-			</div>
-		</div>
-	</section>
+            <div class="mt-6">
+                <Button href="/articles"> Read more articles </Button>
+            </div>
+        </div>
+    </section>
 
-	<section id="projects">
-		<div class="px-8 py-16 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
-			<SectionHeader 
-				title="Projects" 
-				description="Things I'm working on." 
-			/>
-			<div class="mt-12 space-y-8">
-				<ProjectCard 
-					title="Shelveless" 
-					description="When you start reading books, people will want to lend you books they've enjoyed. And once you've acquired a few books yourself, you will want to lend them out to others. This is a part of life; humans love to share stories, experiences and joy. Shelveless came from this idea. Add your friends and keep track of the books you share." 
-					url="https://shelveless.com/" 
-				/>
+    <section id="projects">
+        <div class="px-8 py-16 mx-auto md:px-12 lg:px-32 max-w-7xl relative">
+            <SectionHeader
+                title="Projects"
+                description="Things I'm working on."
+            />
+            <div class="mt-12 space-y-8">
+                <ProjectCard
+                    title="Shelveless"
+                    description="When you start reading books, people will want to lend you books they've enjoyed. And once you've acquired a few books yourself, you will want to lend them out to others. This is a part of life; humans love to share stories, experiences and joy. Shelveless came from this idea. Add your friends and keep track of the books you share."
+                    url="https://shelveless.com/"
+                />
 
-				<ProjectCard 
-					title="localpantry.shop" 
-					description="A website for artisans to display their products. It's a simple way to showcase their products and get more customers." 
-					url="https://localpantry.shop/" 
-				/>
-			</div>
-		</div>
-	</section>
+                <ProjectCard
+                    title="tweedruk.nl"
+                    description="A website to buy curated secondhand books."
+                    url="https://tweedruk.nl/"
+                />
+            </div>
+        </div>
+    </section>
 </Layout>
