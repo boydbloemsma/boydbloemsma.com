@@ -1,14 +1,14 @@
 {
-  "event-tracking-using-laravel-queues": "158",
   "deploying-laravel-reverb-in-production": "1376",
-  "building-my-first-saas-using-laravel": "61",
-  "creating-a-markdown-blog-using-laravel-10": "108",
-  "simplicity-is-the-ultimate-sophistication": "110",
-  "hosting-laravel-applications-statically": "1698",
-  "why-i-get-demotivated": "10",
-  "git-submodules-for-dummies": "141",
-  "php-s-built-in-web-server": "26",
   "laravel-og-images": "45",
   "generate-unique-slugs-on-the-fly-in-laravel": "209",
-  "rewriting-my-blog-in-astro": "35"
+  "git-submodules-for-dummies": "141",
+  "rewriting-my-blog-in-astro": "35",
+  "event-tracking-using-laravel-queues": "158",
+  "php-s-built-in-web-server": "26",
+  "why-i-get-demotivated": "10",
+  "simplicity-is-the-ultimate-sophistication": "110",
+  "creating-a-markdown-blog-using-laravel-10": "108",
+  "building-my-first-saas-using-laravel": "61",
+  "hosting-laravel-applications-statically": "1698"
 }
